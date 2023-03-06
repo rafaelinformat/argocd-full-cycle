@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: goapp
+spec:
+  selector:
+    matchLabels:
+      app: goapp
+  template:
+    metadata:
+      labels:
+        name: goapp
+    spec:
+      containers:
+      - name: goapp
+        image: blittergame/argocd-fullcycle:latest
+        ports:
+        - containerPort: 8080
+        
