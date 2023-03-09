@@ -18,3 +18,33 @@ jobs:
           password: ${{secrets.DOCKER_PASSWORD}}
           repository: blittergame/argocd-fullcycle
           tags: ${{github.sha}}, latest
+
+  deploy:
+    name: deploy 
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: checkout 
+        uses: actions/checkout@v2
+
+      - name: kustomize kubernetes 
+        uses: imranismail/setup-kustomize@v1
+        with:
+          kustomize_version: v3.6.1
+
+      - name: update k8s
+        run: 
+          cd k8s 
+          kustomize edit set image goapp=blittergame/argocd-fullcycle:${{github.sha}}, latest
+          cat kustomization.yaml
+
+      - name: commit 
+        run:
+          git config --local user.email  "action@github.com"
+          git config --local user.name  "Deploy Action"
+          git commit -am "change image tag by git actions"
+
+      - name: push
+        uses: ad-m/gitbub-push-action@master
+        
+
