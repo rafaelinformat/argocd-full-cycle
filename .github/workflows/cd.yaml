@@ -48,5 +48,7 @@ jobs:
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          repository: https://github.com/rafaelinformat/argocd-full-cycle.git
+          branch: ${{ github.ref }}
         
 
