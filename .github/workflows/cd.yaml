@@ -33,7 +33,7 @@ jobs:
           kustomize_version: v3.6.1
 
       - name: update k8s
-        run: 
+        run:
           cd k8s
           kustomize edit set image goapp=blittergame/argocd-fullcycle:${{github.sha}}
           cat kustomization.yaml
