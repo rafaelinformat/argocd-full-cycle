@@ -45,6 +45,6 @@ jobs:
           git commit -am "change image tag by git actions"
 
       - name: push
-        uses: ad-m/gitbub-push-action@master
+        uses: ad-m/github-push-action@master
         
 
