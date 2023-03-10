@@ -1,4 +1,4 @@
-name: CD 
+name: Pipeline ArgoCD
 on:
   push:
     branches: [main]
