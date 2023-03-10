@@ -47,6 +47,6 @@ jobs:
       - name: push
         uses: ad-m/github-push-action@master
         with:
-          github_token: ${{ secrets.PAT }}
+          github_token: ${{secrets.PAT}}
         
 
